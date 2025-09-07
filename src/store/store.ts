@@ -5,14 +5,14 @@ import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers } from '@reduxjs/toolkit';
 
-// Import slices (will be created later)
-// import authSlice from './slices/authSlice';
+// Import slices
+import authSlice from './slices/authSlice';
 // import chatSlice from './slices/chatSlice';
 // import machineSlice from './slices/machineSlice';
 // import settingsSlice from './slices/settingsSlice';
 
 // Temporary placeholder reducer
-const placeholderReducer = (state = {}, action: any) => state;
+// const placeholderReducer = (state = {}, action: any) => state;
 
 const persistConfig = {
   key: 'root',
@@ -22,11 +22,10 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  // auth: authSlice,
+  auth: authSlice,
   // chat: chatSlice,
   // machine: machineSlice,
   // settings: settingsSlice,
-  placeholder: placeholderReducer, // Temporary
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

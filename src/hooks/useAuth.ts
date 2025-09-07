@@ -2,8 +2,8 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback } from 'react';
-// import { RootState, AppDispatch } from '../store/store';
-// import { loginAsync, logoutAsync, registerAsync } from '../store/slices/authSlice';
+import { RootState, AppDispatch } from '../store/store';
+import { loginAsync, logoutAsync, registerAsync, clearError } from '../store/slices/authSlice';
 
 // Temporary interfaces until we have the actual store setup
 interface User {
@@ -25,36 +25,26 @@ interface RegisterData {
 
 // Temporary placeholder hook structure
 export const useAuth = () => {
-  // const dispatch = useDispatch<AppDispatch>();
-  // const { user, token, isAuthenticated, isLoading, error } = useSelector(
-  //   (state: RootState) => state.auth
-  // );
-
-  // Temporary mock data
-  const user: User | null = null;
-  const isAuthenticated = false;
-  const isLoading = false;
-  const error: string | null = null;
+  const dispatch = useDispatch<AppDispatch>();
+  const { user, token, isAuthenticated, isLoading, error } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   const login = useCallback(async (credentials: LoginCredentials) => {
-    // dispatch(loginAsync(credentials));
-    console.log('Login attempted with:', credentials.email);
-  }, []);
+    dispatch(loginAsync(credentials));
+  }, [dispatch]);
 
   const register = useCallback(async (userData: RegisterData) => {
-    // dispatch(registerAsync(userData));
-    console.log('Register attempted with:', userData.email);
-  }, []);
+    dispatch(registerAsync(userData));
+  }, [dispatch]);
 
   const logout = useCallback(async () => {
-    // dispatch(logoutAsync());
-    console.log('Logout attempted');
-  }, []);
+    dispatch(logoutAsync());
+  }, [dispatch]);
 
-  const clearError = useCallback(() => {
-    // dispatch(clearAuthError());
-    console.log('Clear error attempted');
-  }, []);
+  const clearAuthError = useCallback(() => {
+    dispatch(clearError());
+  }, [dispatch]);
 
   return {
     user,
@@ -64,6 +54,6 @@ export const useAuth = () => {
     login,
     register,
     logout,
-    clearError,
+    clearError: clearAuthError,
   };
 };
