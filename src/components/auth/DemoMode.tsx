@@ -43,7 +43,7 @@ export const DemoMode: React.FC = () => {
         style={styles.demoButton}
         icon="rocket-launch"
       >
-        Skip Login - Access LISA Chat
+        Skip Login - Access eLISA Chat
       </Button>
       
       <Text variant="bodySmall" style={styles.helpText}>

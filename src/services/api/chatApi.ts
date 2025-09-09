@@ -54,9 +54,9 @@ export const chatApi = createApi({
             
             return {
               data: {
-                message: data.response || data.answer || data.message || 'Response received from LISA.',
+                message: data.response || data.answer || data.message || 'Response received from eLISA.',
                 confidence: data.confidence || 0.95,
-                sources: data.sources || ['LISA Knowledge Base'],
+                sources: data.sources || ['eLISA Knowledge Base'],
                 processingTime: data.processing_time || 1200,
                 sessionId: request.sessionId,
               },

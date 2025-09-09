@@ -49,7 +49,7 @@ export const TypingIndicator: React.FC = () => {
         <Card.Content style={styles.messageContent}>
           <View style={styles.avatarContainer}>
             <Icon 
-              name="lisa-robot" 
+              name="elisa-robot" 
               size={20} 
               color={theme.colors.primary}
             />
@@ -57,7 +57,7 @@ export const TypingIndicator: React.FC = () => {
           
           <View style={styles.typingContainer}>
             <Text style={[styles.typingText, { color: theme.colors.onSurfaceVariant }]}>
-              LISA is typing
+              eLISA is typing
             </Text>
             <View style={styles.dotsContainer}>
               <Animated.View style={[

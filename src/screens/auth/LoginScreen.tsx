@@ -88,7 +88,7 @@ export const LoginScreen: React.FC = () => {
         >
           <View style={styles.header}>
             <Text variant="headlineLarge" style={styles.title}>
-              Welcome to LISA
+              Welcome to eLISA
             </Text>
             <Text variant="bodyLarge" style={styles.subtitle}>
               Your Learning Intelligence Support Assistant

@@ -64,7 +64,7 @@ export const QuickActionsFAB: React.FC<QuickActionsFABProps> = ({
             <FAB.Group
         open={open}
         visible={true}
-        icon={open ? 'close' : () => <Icon name="lisa-brain" size={24} />}
+        icon={open ? 'close' : () => <Icon name="elisa-brain" size={24} />}
         actions={actions.map(action => ({
           ...action,
           icon: () => <Icon name={action.icon} size={20} />,

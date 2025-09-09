@@ -72,7 +72,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({
         
         <View style={styles.rightSection}>
           {isTyping && (
-            <Text style={styles.typingText}>LISA is typing...</Text>
+            <Text style={styles.typingText}>eLISA is typing...</Text>
           )}
           {!isTyping && (
             <>

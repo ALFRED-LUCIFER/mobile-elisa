@@ -1,4 +1,4 @@
-// src/components/common/LoadingScreen.tsx - Enhanced loading screen for LISA
+// src/components/common/LoadingScreen.tsx - Enhanced loading screen for eLISA
 
 import React, { useEffect, useRef } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
@@ -74,7 +74,7 @@ export const LoadingScreen: React.FC = () => {
         >
           <Surface style={[styles.logoSurface, { backgroundColor: 'white' }]} elevation={4}>
             <Text style={[styles.logoText, { color: theme.colors.primary }]}>
-              LISA
+              eLISA
             </Text>
           </Surface>
         </Animated.View>

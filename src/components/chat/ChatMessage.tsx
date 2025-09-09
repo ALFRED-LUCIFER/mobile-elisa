@@ -128,7 +128,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                   variant="labelSmall" 
                   style={[styles.senderName, { color: theme.colors.primary }]}
                 >
-                  LISA Assistant
+                  eLISA Assistant
                 </Text>
                 <Menu
                   visible={menuVisible}

@@ -72,7 +72,7 @@ export const PERMISSIONS = {
 export const APP_INFO = {
   VERSION: '1.0.0',
   BUILD_NUMBER: '1',
-  APP_NAME: 'LISA',
+  APP_NAME: 'eLISA',
   SUPPORT_EMAIL: 'support@lisa-app.com',
   PRIVACY_POLICY_URL: 'https://lisa-app.com/privacy',
   TERMS_URL: 'https://lisa-app.com/terms',

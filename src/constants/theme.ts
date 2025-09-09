@@ -6,7 +6,7 @@ export const lightTheme = {
   ...MD3LightTheme,
   colors: {
     ...MD3LightTheme.colors,
-    primary: '#6366F1', // Modern indigo for LISA
+    primary: '#6366F1', // Modern indigo for eLISA
     secondary: '#EC4899', // Pink accent for chat
     tertiary: '#10B981', // Success green
     surface: '#FFFFFF',
@@ -16,7 +16,7 @@ export const lightTheme = {
     success: '#10B981',
     warning: '#F59E0B',
     info: '#3B82F6',
-    // Custom LISA colors
+    // Custom eLISA colors
     chatBubbleUser: '#6366F1',
     chatBubbleAssistant: '#F1F5F9',
     accent: '#EC4899',
@@ -38,7 +38,7 @@ export const darkTheme = {
     success: '#34D399',
     warning: '#FBBF24',
     info: '#60A5FA',
-    // Custom LISA colors for dark mode
+    // Custom eLISA colors for dark mode
     chatBubbleUser: '#8B5CF6',
     chatBubbleAssistant: '#334155',
     accent: '#F472B6',

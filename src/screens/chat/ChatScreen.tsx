@@ -202,7 +202,7 @@ export const ChatScreen: React.FC = () => {
         style={[styles.emptyAvatar, { backgroundColor: theme.colors.primary }]}
       />
       <Text variant="headlineSmall" style={styles.emptyTitle}>
-        Hello! I'm LISA
+        Hello! I'm eLISA
       </Text>
       <Text variant="bodyLarge" style={styles.emptySubtitle}>
         Your Learning Intelligence Support Assistant
@@ -290,7 +290,7 @@ export const ChatScreen: React.FC = () => {
             />
             <View style={styles.headerText}>
               <Appbar.Content 
-                title="LISA Assistant"
+                title="eLISA Assistant"
                 titleStyle={[styles.headerTitle, { color: theme.colors.onPrimary }]}
               />
               <View style={styles.statusContainer}>

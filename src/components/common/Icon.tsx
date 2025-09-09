@@ -1,4 +1,4 @@
-// src/components/common/Icon.tsx - Unified icon component for LISA app
+// src/components/common/Icon.tsx - Unified icon component for eLISA app
 
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
@@ -11,8 +11,8 @@ import { useTheme } from 'react-native-paper';
 // Icon library types
 type IconLibrary = 'MaterialCommunity' | 'Material' | 'Feather' | 'AntDesign';
 
-// Predefined icon mappings for LISA app
-const LISA_ICONS = {
+// Predefined icon mappings for eLISA app
+const ELISA_ICONS = {
   // Chat icons
   'chat-send': { library: 'MaterialCommunity' as IconLibrary, name: 'send-circle' },
   'chat-attach': { library: 'MaterialCommunity' as IconLibrary, name: 'paperclip' },
@@ -34,10 +34,10 @@ const LISA_ICONS = {
   'warning': { library: 'MaterialCommunity' as IconLibrary, name: 'alert' },
   'info': { library: 'MaterialCommunity' as IconLibrary, name: 'information' },
   
-  // LISA specific icons
-  'lisa-robot': { library: 'MaterialCommunity' as IconLibrary, name: 'robot' },
-  'lisa-brain': { library: 'MaterialCommunity' as IconLibrary, name: 'brain' },
-  'lisa-support': { library: 'MaterialCommunity' as IconLibrary, name: 'account-question' },
+  // eLISA specific icons
+  'elisa-robot': { library: 'MaterialCommunity' as IconLibrary, name: 'robot' },
+  'elisa-brain': { library: 'MaterialCommunity' as IconLibrary, name: 'brain' },
+  'elisa-support': { library: 'MaterialCommunity' as IconLibrary, name: 'account-question' },
   
   // Lisec machine icons
   'machine': { library: 'MaterialCommunity' as IconLibrary, name: 'factory' },
@@ -76,10 +76,10 @@ const LISA_ICONS = {
   'timer': { library: 'MaterialCommunity' as IconLibrary, name: 'timer' },
 } as const;
 
-type LisaIconName = keyof typeof LISA_ICONS;
+type ElisaIconName = keyof typeof ELISA_ICONS;
 
 interface IconProps {
-  name: LisaIconName | string;
+  name: ElisaIconName | string;
   size?: number;
   color?: string;
   library?: IconLibrary;
@@ -96,10 +96,10 @@ export const Icon: React.FC<IconProps> = ({
   const theme = useTheme();
   const iconColor = color || theme.colors.onSurface;
   
-  // Check if it's a predefined LISA icon
-  const lisaIcon = LISA_ICONS[name as LisaIconName];
-  const iconLibrary = library || lisaIcon?.library || 'MaterialCommunity';
-  const iconName = lisaIcon?.name || name;
+  // Check if it's a predefined eLISA icon
+  const elisaIcon = ELISA_ICONS[name as ElisaIconName];
+  const iconLibrary = library || elisaIcon?.library || 'MaterialCommunity';
+  const iconName = elisaIcon?.name || name;
   
   const IconComponent = (() => {
     switch (iconLibrary) {
@@ -125,6 +125,6 @@ export const Icon: React.FC<IconProps> = ({
   );
 };
 
-// Export predefined LISA icon names for type safety
-export type { LisaIconName };
+// Export predefined eLISA icon names for type safety
+export type { ElisaIconName };
 export default Icon;
