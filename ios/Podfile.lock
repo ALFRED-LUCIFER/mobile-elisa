@@ -50,7 +50,6 @@ PODS:
     - React-RCTText (= 0.81.1)
     - React-RCTVibration (= 0.81.1)
   - React-callinvoker (0.81.1)
-  - React-Codegen (0.1.0)
   - React-Core (0.81.1):
     - boost
     - DoubleConversion
@@ -1752,68 +1751,10 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
-  - react-native-biometrics (3.0.1):
-    - React-Core
   - react-native-config (1.5.9):
     - react-native-config/App (= 1.5.9)
   - react-native-config/App (1.5.9):
     - React-Core
-  - react-native-document-picker (9.3.1):
-    - boost
-    - DoubleConversion
-    - fast_float
-    - fmt
-    - glog
-    - hermes-engine
-    - RCT-Folly
-    - RCT-Folly/Fabric
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - SocketRocket
-    - Yoga
-  - react-native-image-picker (7.2.3):
-    - boost
-    - DoubleConversion
-    - fast_float
-    - fmt
-    - glog
-    - hermes-engine
-    - RCT-Folly
-    - RCT-Folly/Fabric
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - SocketRocket
-    - Yoga
   - react-native-mmkv (2.12.2):
     - boost
     - DoubleConversion
@@ -2465,8 +2406,6 @@ PODS:
     - Yoga
   - RNDeviceInfo (10.14.0):
     - React-Core
-  - RNFileViewer (2.1.5):
-    - React-Core
   - RNGestureHandler (2.28.0):
     - boost
     - DoubleConversion
@@ -2495,8 +2434,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNKeychain (8.2.0):
-    - React-Core
   - RNPermissions (4.1.5):
     - boost
     - DoubleConversion
@@ -2761,14 +2698,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNShare (10.2.1):
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Codegen
-    - React-Core
-    - React-RCTFabric
-    - ReactCommon/turbomodule/core
   - RNVectorIcons (10.3.0):
     - boost
     - DoubleConversion
@@ -2842,10 +2771,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
-  - react-native-biometrics (from `../node_modules/react-native-biometrics`)
   - react-native-config (from `../node_modules/react-native-config`)
-  - react-native-document-picker (from `../node_modules/react-native-document-picker`)
-  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -2880,14 +2806,11 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
-  - RNFileViewer (from `../node_modules/react-native-file-viewer`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNShare (from `../node_modules/react-native-share`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - SocketRocket (~> 0.7.1)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -2896,7 +2819,6 @@ SPEC REPOS:
   trunk:
     - MMKV
     - MMKVCore
-    - React-Codegen
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2981,14 +2903,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
-  react-native-biometrics:
-    :path: "../node_modules/react-native-biometrics"
   react-native-config:
     :path: "../node_modules/react-native-config"
-  react-native-document-picker:
-    :path: "../node_modules/react-native-document-picker"
-  react-native-image-picker:
-    :path: "../node_modules/react-native-image-picker"
   react-native-mmkv:
     :path: "../node_modules/react-native-mmkv"
   react-native-safe-area-context:
@@ -3057,12 +2973,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
-  RNFileViewer:
-    :path: "../node_modules/react-native-file-viewer"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNKeychain:
-    :path: "../node_modules/react-native-keychain"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
   RNReactNativeHapticFeedback:
@@ -3071,8 +2983,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNShare:
-    :path: "../node_modules/react-native-share"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -3088,13 +2998,12 @@ SPEC CHECKSUMS:
   hermes-engine: 4f8246b1f6d79f625e0d99472d1f3a71da4d28ca
   MMKV: 941e8774da0e6fdf12c6b3fcc833ca687ae5a42d
   MMKVCore: 6d5cc1bacce539f4c974985dfe646fb65a5d27d2
-  RCT-Folly: 59ec0ac1f2f39672a0c6e6cecdd39383b764646f
+  RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
   RCTDeprecation: c4b9e2fd0ab200e3af72b013ed6113187c607077
   RCTRequired: e97dd5dafc1db8094e63bc5031e0371f092ae92a
   RCTTypeSafety: 720403058b7c1380c6a3ae5706981d6362962c89
   React: f1486d005993b0af01943af1850d3d4f3b597545
   React-callinvoker: 133f69368c8559e744efa345223625d412f5dfbe
-  React-Codegen: 4b8b4817cea7a54b83851d4c1f91f79aa73de30a
   React-Core: 559823921b4f294c2840fa8238ca958a29ddc211
   React-CoreModules: c41e7bbfabbc420783bb926f45837a0d5e53341e
   React-cxxreact: 9cb9fa738274a1b36b97ede09c8a6717dec1a20b
@@ -3122,10 +3031,7 @@ SPEC CHECKSUMS:
   React-logger: 7aef4d74123e5e3d267e5af1fbf5135b5a0d8381
   React-Mapbuffer: 91e0eab42a6ae7f3e34091a126d70fc53bd3823e
   React-microtasksnativemodule: 1ead4fe154df3b1ba34b5a9e35ef3c4bdfa72ccb
-  react-native-biometrics: 43ed5b828646a7862dbc7945556446be00798e7d
   react-native-config: d08b60865268872495a43e211059b4606131fe01
-  react-native-document-picker: dcf5e57f3bcae61bf8384a1c6f90896f81e17941
-  react-native-image-picker: b16541b587b275e81a12f9b82f215c5e9b0ccbf3
   react-native-mmkv: b128128938c42ef6d3de47b05236315ea0c1f863
   react-native-safe-area-context: c6e2edd1c1da07bdce287fa9d9e60c5f7b514616
   React-NativeModulesApple: eff2eba56030eb0d107b1642b8f853bc36a833ac
@@ -3160,14 +3066,11 @@ SPEC CHECKSUMS:
   ReactCommon: ce5d4226dfaf9d5dacbef57b4528819e39d3a120
   RNCAsyncStorage: 01e4301688a611936e3644746ffe3325d3181952
   RNDeviceInfo: 98bb51ba1519cd3f19f14e7236b5bb1c312c780f
-  RNFileViewer: 4b5d83358214347e4ab2d4ca8d5c1c90d869e251
   RNGestureHandler: 3a73f098d74712952870e948b3d9cf7b6cae9961
-  RNKeychain: bbe2f6d5cc008920324acb49ef86ccc03d3b38e4
   RNPermissions: 53e82c62175e55ce0627946de0ceed2e5eccff2d
   RNReactNativeHapticFeedback: be4f1b4bf0398c30b59b76ed92ecb0a2ff3a69c6
   RNReanimated: d39bf1990c5f3e9efee9ec54c0470622c09a5b82
   RNScreens: 6b210a35db9d7f61b2004b6bf3a639fba95c154c
-  RNShare: 268bd40f6f3830299d187b05d3c6f7bbbb3e9d85
   RNVectorIcons: 791f13226ec4a3fd13062eda9e892159f0981fae
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 11c9686a21e2cd82a094a723649d9f4507200fb0

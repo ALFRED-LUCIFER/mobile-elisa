@@ -8,21 +8,23 @@ export const loginAsync = createAsyncThunk(
   'auth/login',
   async (credentials: { email: string; password: string }, { rejectWithValue }) => {
     try {
-      // TODO: Replace with actual API call
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Demo mode - bypass authentication for testing
+      await new Promise<void>(resolve => setTimeout(resolve, 1000)); // Simulate API delay
+      
+      // Return demo user data for any valid email/password combination
+      const demoUser = {
+        user: {
+          id: 'demo-user-123',
+          email: credentials.email,
+          name: 'Demo User',
+          avatar: undefined,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
         },
-        body: JSON.stringify(credentials),
-      });
-
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
-      const data = await response.json();
-      return data;
+        token: 'demo-token-' + Date.now()
+      };
+      
+      return demoUser;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Login failed');
     }
@@ -33,21 +35,23 @@ export const registerAsync = createAsyncThunk(
   'auth/register',
   async (userData: { name: string; email: string; password: string }, { rejectWithValue }) => {
     try {
-      // TODO: Replace with actual API call
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Demo mode - bypass registration for testing
+      await new Promise<void>(resolve => setTimeout(resolve, 1000)); // Simulate API delay
+      
+      // Return demo user data for registration
+      const demoUser = {
+        user: {
+          id: 'demo-user-' + Date.now(),
+          email: userData.email,
+          name: userData.name,
+          avatar: undefined,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
         },
-        body: JSON.stringify(userData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Registration failed');
-      }
-
-      const data = await response.json();
-      return data;
+        token: 'demo-token-' + Date.now()
+      };
+      
+      return demoUser;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Registration failed');
     }
@@ -58,8 +62,12 @@ export const logoutAsync = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      // TODO: Clear secure storage
+      // Demo mode - simulate logout
+      await new Promise<void>(resolve => setTimeout(resolve, 500));
+      
+      // In a real app, this would clear secure storage
       // await SecureStorage.removeItem('auth_token');
+      
       return null;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Logout failed');

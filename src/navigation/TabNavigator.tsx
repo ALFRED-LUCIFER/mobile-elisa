@@ -10,6 +10,9 @@ import { MainTabParamList } from './types';
 // import { MachineNavigator } from './MachineNavigator';
 // import { SettingsNavigator } from './SettingsNavigator';
 
+// Import screens
+import { ChatScreen } from '../screens/chat/ChatScreen';
+
 // Temporary placeholder components
 const PlaceholderScreen = ({ title }: { title: string }) => {
   const React = require('react');
@@ -23,7 +26,6 @@ const PlaceholderScreen = ({ title }: { title: string }) => {
   );
 };
 
-const ChatNavigator = () => <PlaceholderScreen title="Chat" />;
 const MachineNavigator = () => <PlaceholderScreen title="Machines" />;
 const SettingsNavigator = () => <PlaceholderScreen title="Settings" />;
 
@@ -48,7 +50,7 @@ export const TabNavigator: React.FC = () => {
     >
       <Tab.Screen
         name={NAVIGATION_ROUTES.CHAT_TAB}
-        component={ChatNavigator}
+        component={ChatScreen}
         options={{
           tabBarLabel: 'Chat',
           // tabBarIcon: ({ color, size }) => (

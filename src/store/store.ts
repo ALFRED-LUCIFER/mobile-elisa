@@ -7,7 +7,8 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 // Import slices
 import authSlice from './slices/authSlice';
-// import chatSlice from './slices/chatSlice';
+import chatSlice from './slices/chatSlice';
+import { chatApi } from '../services/api/chatApi';
 // import machineSlice from './slices/machineSlice';
 // import settingsSlice from './slices/settingsSlice';
 
@@ -23,7 +24,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authSlice,
-  // chat: chatSlice,
+  chat: chatSlice,
+  [chatApi.reducerPath]: chatApi.reducer,
   // machine: machineSlice,
   // settings: settingsSlice,
 });
@@ -37,7 +39,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
       },
-    }),
+    }).concat(chatApi.middleware),
   devTools: __DEV__,
 });
 

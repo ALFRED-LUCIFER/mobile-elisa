@@ -6,16 +6,21 @@ export const lightTheme = {
   ...MD3LightTheme,
   colors: {
     ...MD3LightTheme.colors,
-    primary: '#2196F3',
-    secondary: '#03DAC6',
-    tertiary: '#FF9800',
+    primary: '#6366F1', // Modern indigo for LISA
+    secondary: '#EC4899', // Pink accent for chat
+    tertiary: '#10B981', // Success green
     surface: '#FFFFFF',
-    surfaceVariant: '#F5F5F5',
-    background: '#FAFAFA',
-    error: '#F44336',
-    success: '#4CAF50',
-    warning: '#FF9800',
-    info: '#2196F3',
+    surfaceVariant: '#F8FAFC',
+    background: '#F1F5F9',
+    error: '#EF4444',
+    success: '#10B981',
+    warning: '#F59E0B',
+    info: '#3B82F6',
+    // Custom LISA colors
+    chatBubbleUser: '#6366F1',
+    chatBubbleAssistant: '#F1F5F9',
+    accent: '#EC4899',
+    gradient: ['#6366F1', '#8B5CF6'],
   },
 };
 
@@ -23,16 +28,21 @@ export const darkTheme = {
   ...MD3DarkTheme,
   colors: {
     ...MD3DarkTheme.colors,
-    primary: '#2196F3',
-    secondary: '#03DAC6',
-    tertiary: '#FF9800',
-    surface: '#121212',
-    surfaceVariant: '#1E1E1E',
-    background: '#000000',
-    error: '#F44336',
-    success: '#4CAF50',
-    warning: '#FF9800',
-    info: '#2196F3',
+    primary: '#8B5CF6', // Purple for dark mode
+    secondary: '#F472B6', // Light pink accent
+    tertiary: '#34D399', // Green accent
+    surface: '#1E293B',
+    surfaceVariant: '#334155',
+    background: '#0F172A',
+    error: '#F87171',
+    success: '#34D399',
+    warning: '#FBBF24',
+    info: '#60A5FA',
+    // Custom LISA colors for dark mode
+    chatBubbleUser: '#8B5CF6',
+    chatBubbleAssistant: '#334155',
+    accent: '#F472B6',
+    gradient: ['#8B5CF6', '#6366F1'],
   },
 };
 

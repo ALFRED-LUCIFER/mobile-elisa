@@ -15,6 +15,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { Input } from '../../components/common/Input';
 import { Loading } from '../../components/common/Loading';
+import { DemoMode } from '../../components/auth/DemoMode';
 import { useAuth } from '../../hooks/useAuth';
 import { validateLoginForm } from '../../utils/helpers/validationHelpers';
 import { AuthStackParamList } from '../../navigation/types';
@@ -159,6 +160,9 @@ export const LoginScreen: React.FC = () => {
               Sign Up
             </Button>
           </View>
+
+          {/* Demo Mode for Quick Access */}
+          <DemoMode />
         </ScrollView>
 
         {isLoading && <Loading overlay text="Signing you in..." />}

@@ -8,7 +8,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { PaperProvider } from 'react-native-paper';
+import { PaperProvider, Portal } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { store, persistor } from './src/store/store';
 import { lightTheme } from './src/constants/theme';
@@ -20,7 +20,9 @@ function App(): React.JSX.Element {
       <PersistGate loading={null} persistor={persistor}>
         <PaperProvider theme={lightTheme}>
           <SafeAreaProvider>
-            <AppNavigator />
+            <Portal.Host>
+              <AppNavigator />
+            </Portal.Host>
           </SafeAreaProvider>
         </PaperProvider>
       </PersistGate>
