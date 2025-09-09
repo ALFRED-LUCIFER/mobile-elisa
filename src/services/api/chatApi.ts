@@ -77,11 +77,6 @@ export const chatApi = createApi({
         // Enhanced Lisec-specific fallback responses for testing
         const lisecResponses = [
           {
-            message: "Hello! I'm LISA, your Lisec intelligent support assistant. I can help you with technical support, maintenance schedules, spare parts ordering, and machine diagnostics. How can I assist you today?",
-            category: "greeting",
-            sources: ["LISA Knowledge Base", "Lisec Support Portal"]
-          },
-          {
             message: "For Lisec technical support, you can contact us through multiple channels:\n\n• Phone: +43 7427 200-0\n• Email: service@lisec.com\n• Online Portal: support.lisec.com\n• Emergency Hotline: Available 24/7 for critical issues\n\nOur support team is available Monday-Friday, 8:00-17:00 CET.",
             category: "support",
             sources: ["Lisec Contact Directory", "Support Portal"]
@@ -113,15 +108,13 @@ export const chatApi = createApi({
         const messageLower = request.message.toLowerCase();
         
         if (messageLower.includes('support') || messageLower.includes('contact')) {
-          selectedResponse = lisecResponses.find(r => r.category === 'support') || lisecResponses[1];
+          selectedResponse = lisecResponses.find(r => r.category === 'support') || lisecResponses[0];
         } else if (messageLower.includes('maintenance') || messageLower.includes('schedule')) {
-          selectedResponse = lisecResponses.find(r => r.category === 'maintenance') || lisecResponses[2];
+          selectedResponse = lisecResponses.find(r => r.category === 'maintenance') || lisecResponses[1];
         } else if (messageLower.includes('parts') || messageLower.includes('order') || messageLower.includes('spare')) {
-          selectedResponse = lisecResponses.find(r => r.category === 'parts') || lisecResponses[3];
+          selectedResponse = lisecResponses.find(r => r.category === 'parts') || lisecResponses[2];
         } else if (messageLower.includes('light') || messageLower.includes('signal') || messageLower.includes('indicator')) {
-          selectedResponse = lisecResponses.find(r => r.category === 'diagnostics') || lisecResponses[4];
-        } else if (messageLower.includes('hello') || messageLower.includes('hi') || messageLower.includes('help')) {
-          selectedResponse = lisecResponses.find(r => r.category === 'greeting') || lisecResponses[0];
+          selectedResponse = lisecResponses.find(r => r.category === 'diagnostics') || lisecResponses[3];
         } else {
           // Random selection for other queries
           selectedResponse = lisecResponses[Math.floor(Math.random() * lisecResponses.length)];

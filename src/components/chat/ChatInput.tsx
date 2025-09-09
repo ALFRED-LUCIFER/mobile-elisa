@@ -10,12 +10,14 @@ interface ChatInputProps {
   onSendMessage: (message: string) => void;
   disabled?: boolean;
   placeholder?: string;
+  messageCount?: number; // Add message count to control suggestions
 }
 
 export const ChatInput: React.FC<ChatInputProps> = ({
   onSendMessage,
   disabled = false,
-  placeholder = "Ask LISA anything..."
+  placeholder = "Type a message...",
+  messageCount = 0, // Default to 0 if not provided
 }) => {
   const [message, setMessage] = useState('');
   const theme = useTheme();
@@ -44,119 +46,84 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     }
   };
 
+  // Handle suggestion visibility - show only when input is empty AND no messages exist
+  const showSuggestions = message.length === 0 && messageCount === 0;
+
   const quickSuggestions = [
     {
-      text: "Contact Technical Support",
+      text: "How can I contact Lisec technical support?",
       icon: "contact"
     },
     {
-      text: "Maintenance Schedule",
+      text: "How often should I carry out basic maintenance on my Lisec machine?",
       icon: "maintenance"
     },
     {
-      text: "Order Spare Parts",
+      text: "What do the light signals on my machine mean?",
       icon: "parts"
     },
     {
-      text: "Machine Diagnostics",
+      text: "How can I order spare parts for my Lisec machine?",
       icon: "lights"
     },
-    {
-      text: "Installation Guide",
-      icon: "installation"
-    },
-    {
-      text: "Safety Procedures",
-      icon: "safety"
-    },
+   
   ];
 
   return (
     <Surface style={styles.container} elevation={2}>
-      {/* Quick suggestions */}
-      {message.length === 0 && !isFocused && (
+      {/* Quick suggestions - part of the same surface */}
+      {showSuggestions && (
         <View style={styles.suggestionsContainer}>
-            {quickSuggestions.map((suggestion, index) => (
-              <SuggestionChip
-                key={index}
-                text={suggestion.text}
-                icon={suggestion.icon as any}
-                onPress={() => {
-                  // Directly send the suggestion instead of just setting it
-                  onSendMessage(suggestion.text);
-                }}
-                index={index}
-              />
-            ))}
+          {quickSuggestions.map((suggestion, index) => (
+            <SuggestionChip
+              key={index}
+              text={suggestion.text}
+              onPress={() => {
+                // Directly send the suggestion instead of just setting it
+                onSendMessage(suggestion.text);
+              }}
+            />
+          ))}
         </View>
       )}
 
-      <View style={styles.inputRow}>
-        {/* Attachment button */}
-        <IconButton
-          icon={() => <Icon name="chat-attach" size={20} />}
-          mode="contained-tonal"
-          size={20}
-          style={styles.attachButton}
-          iconColor={theme.colors.primary}
-          onPress={() => {
-            // TODO: Implement attachment functionality
-          }}
-        />
+      {/* Separator line when suggestions are visible */}
+      {showSuggestions && <View style={styles.separator} />}
 
-        {/* Text input */}
+      {/* Text input - with better visual design */}
+      <View style={styles.inputRow}>
         <View style={styles.inputWrapper}>
-          <TextInput
-            mode="outlined"
-            value={message}
-            onChangeText={setMessage}
-            placeholder={placeholder}
-            multiline={true}
-            numberOfLines={2}
-            maxLength={1000}
-            disabled={disabled}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            style={[
-              styles.textInput,
-              {
-                backgroundColor: isFocused ? theme.colors.surface : theme.colors.surfaceVariant,
-              }
-            ]}
-            contentStyle={styles.textInputContent}
-            outlineStyle={[
-              styles.textInputOutline,
-              {
-                borderColor: isFocused ? theme.colors.primary : theme.colors.outline,
-                borderWidth: isFocused ? 2 : 1,
-              }
-            ]}
-            left={
-              <TextInput.Icon
-                icon={() => <Icon name="chat-message" size={20} />}
-                color={theme.colors.onSurfaceVariant}
-              />
+          <View style={[
+            styles.textInputContainer,
+            {
+              borderColor: isFocused ? theme.colors.primary : '#D1D5DB',
+              borderWidth: 2,
+              backgroundColor: '#FFFFFF',
             }
-            right={
-              message.trim() ? (
-                <TextInput.Icon
-                  icon={() => <Icon name="chat-send" size={20} />}
-                  disabled={!message.trim() || disabled}
-                  onPress={handleSend}
-                  color={message.trim() ? theme.colors.primary : theme.colors.onSurfaceVariant}
-                  style={{ transform: [{ scale: scaleAnim }] }}
-                />
-              ) : (
-                <TextInput.Icon
-                  icon={() => <Icon name="chat-voice" size={20} />}
-                  color={theme.colors.onSurfaceVariant}
-                  onPress={() => {
-                    // TODO: Implement voice input
-                  }}
-                />
-              )
-            }
-          />
+          ]}>
+            <TextInput
+              mode="flat"
+              value={message}
+              onChangeText={setMessage}
+              placeholder={placeholder}
+              placeholderTextColor="#6B7280"
+              multiline={true}
+              numberOfLines={1}
+              maxLength={1000}
+              disabled={disabled}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={styles.textInput}
+              contentStyle={styles.textInputContent}
+              underlineColor="transparent"
+              activeUnderlineColor="transparent"
+              outlineColor="transparent"
+              activeOutlineColor="transparent"
+              cursorColor="#2563EB"
+              selectionColor="#2563EB"
+              
+            />
+          </View>
         </View>
 
         {/* Enhanced send button */}
@@ -207,28 +174,34 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 8,
     backgroundColor: 'white',
     borderRadius: 24,
-    margin: 12,
+    margin: 4,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 6 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
       },
       android: {
-        elevation: 8,
+        elevation: 1,
       },
     }),
   },
   suggestionsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 10,
-    marginBottom: 20,
-    paddingHorizontal: 4,
+    gap: 8,
+    marginBottom: 8,
+    paddingBottom: 2,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#E8E9EA',
+    marginHorizontal: -4,
+    marginBottom: 12,
   },
   suggestionHeader: {
     flexDirection: 'row',
@@ -263,28 +236,29 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     gap: 12,
   },
-  attachButton: {
-    marginBottom: 8,
-    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-  },
   inputWrapper: {
     flex: 1,
+  },
+  textInputContainer: {
+    borderRadius: 24,
+    paddingHorizontal: 2,
+    minHeight: 50,
   },
   textInput: {
     flex: 1,
     maxHeight: 160,
-    minHeight: 72,
+    minHeight: 50,
     backgroundColor: 'transparent',
+    fontSize: 16,
   },
   textInputContent: {
-    paddingHorizontal: 20,
-    paddingVertical: 18,
-    fontSize: 17,
-    lineHeight: 24,
-  },
-  textInputOutline: {
-    borderRadius: 32,
-    borderWidth: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    fontSize: 16,
+    lineHeight: 22,
+    color: '#1F2937',
+    fontWeight: '400',
+    backgroundColor: 'transparent',
   },
   sendButton: {
     marginBottom: 8,

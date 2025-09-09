@@ -14,7 +14,6 @@ import {
 import {
   Appbar,
   useTheme,
-  FAB,
   Snackbar,
   Text,
   Avatar,
@@ -41,7 +40,6 @@ import { ChatMessage } from '../../components/chat/ChatMessage';
 import { ChatInput } from '../../components/chat/ChatInput';
 import { TypingIndicator } from '../../components/chat/TypingIndicator';
 import { StatusBar as CustomStatusBar } from '../../components/common/StatusBar';
-import { QuickActionsFAB } from '../../components/common/QuickActionsFAB';
 import { Message } from '../../types/chat';
 
 const { width, height } = Dimensions.get('window');
@@ -54,7 +52,6 @@ export const ChatScreen: React.FC = () => {
   
   // Animation values
   const headerOpacity = useRef(new Animated.Value(1)).current;
-  const fabScale = useRef(new Animated.Value(1)).current;
   
   // Local state
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
@@ -361,35 +358,16 @@ export const ChatScreen: React.FC = () => {
         )}
       </View>
 
-      {/* Enhanced Chat Input */}
-      <Surface style={styles.inputContainer} elevation={4}>
+      {/* Enhanced Chat Input - positioned at bottom */}
+      <View style={styles.inputWrapper}>
         <ChatInput
           onSendMessage={handleSendMessage}
           disabled={isLoading || isAPISending}
-          placeholder="Ask LISA anything about machines..."
+          placeholder="Type a message..."
+          messageCount={messages.length}
         />
-      </Surface>
+      </View>
 
-      {/* Floating Action Button for Quick Actions */}
-      <Animated.View style={[styles.fabContainer, { transform: [{ scale: fabScale }] }]}>
-        <FAB
-          icon="lightbulb-on"
-          style={[styles.fab, { backgroundColor: theme.colors.secondary }]}
-          onPress={() => {
-            // Quick suggestions
-            Alert.alert(
-              'Quick Questions',
-              'Choose a topic:',
-              [
-                { text: 'Machine Maintenance', onPress: () => handleSendMessage('How do I maintain hydraulic pumps?') },
-                { text: 'Safety Protocols', onPress: () => handleSendMessage('What are the emergency shutdown procedures?') },
-                { text: 'Troubleshooting', onPress: () => handleSendMessage('My motor is overheating, what should I check?') },
-                { text: 'Cancel', style: 'cancel' },
-              ]
-            );
-          }}
-        />
-      </Animated.View>
 
       {/* History Sidebar */}
       {renderHistorySidebar()}
@@ -410,20 +388,6 @@ export const ChatScreen: React.FC = () => {
         {error}
       </Snackbar>
 
-      {/* Quick Actions FAB */}
-      <QuickActionsFAB
-        onNewChat={() => {
-          dispatch(clearMessages());
-          Alert.alert('New Chat', 'Chat history cleared!');
-        }}
-        onClearHistory={handleClearChat}
-        onSettings={() => {
-          Alert.alert('Settings', 'Settings feature coming soon!');
-        }}
-        onVoiceInput={() => {
-          Alert.alert('Voice Input', 'Voice input feature coming soon!');
-        }}
-      />
     </SafeAreaView>
   );
 };
@@ -477,6 +441,7 @@ const styles = StyleSheet.create({
   },
   messagesContainer: {
     flex: 1,
+    paddingBottom: 120, // Space for fixed input at bottom
   },
   messagesList: {
     padding: 16,
@@ -521,17 +486,14 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     backgroundColor: '#FFFFFF',
   },
-  fabContainer: {
+  inputWrapper: {
     position: 'absolute',
-    bottom: 100,
-    right: 16,
-  },
-  fab: {
-    elevation: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#F8F9FA',
+    paddingBottom: 20, // Space above navigation bar
+    paddingHorizontal: 8,
   },
   historyModal: {
     flex: 1,

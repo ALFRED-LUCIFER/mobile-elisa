@@ -89,21 +89,7 @@ const chatSlice = createSlice({
       state.error = action.payload;
     },
     initializeChat: (state) => {
-      // Add welcome message if no messages exist
-      if (state.messages.length === 0) {
-        const welcomeMessage: Message = {
-          id: `welcome_${Date.now()}`,
-          text: "Hello! I'm LISA, your intelligent assistant for machine maintenance and support. How can I help you today?",
-          sender: 'assistant',
-          timestamp: new Date().toISOString(),
-          status: 'delivered',
-          metadata: {
-            isWelcomeMessage: true,
-          },
-        };
-        state.messages.push(welcomeMessage);
-        state.lastMessageId = welcomeMessage.id;
-      }
+      // Initialize chat without welcome message
       state.connectionStatus = 'connected';
     },
   },
